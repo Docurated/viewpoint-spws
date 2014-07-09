@@ -16,7 +16,9 @@ class Viewpoint::SPWS::Connection
   end
 
   def set_auth(user,pass)
-    @httpcli.set_auth(@site_base.to_s, user, pass)
+    normalized_site_base = @site_base.to_s.gsub(/\/+$/, '')
+    @httpcli.set_auth(normalized_site_base, user, pass)
+    @httpcli.get(normalized_site_base)
   end
 
   # Authenticate to the web service. You don't have to do this because
