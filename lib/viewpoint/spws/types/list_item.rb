@@ -26,6 +26,7 @@ class Viewpoint::SPWS::Types::ListItem
   attr_reader :title, :link_title, :status, :priority, :percent_complete
   attr_reader :start_date, :end_date, :recurrence, :all_day_event
   attr_reader :attachments
+  attr_reader :fields
 
   # @param [Viewpoint::SPWS::Websvc::List] ws The webservice instance this ListItem spawned from
   # @param [String] list_id The list id that this item belongs to
@@ -235,6 +236,13 @@ class Viewpoint::SPWS::Types::ListItem
     set_field   :@attachments, 'ows_Attachments', @xmldoc, true
     set_field   :@created_date, 'ows_Created_x0020_Date' unless @created_date
     set_field   :@modified_date, 'ows_Last_x0020_Modified' unless @modified_date
+    begin
+        @fields = {}
+        xml.attributes.each do |a|
+          (@fields[a[1].name.gsub(/^ows_/, '')] = a[1].value rescue true)
+        end
+    rescue true
+    end
     @xmldoc = nil
   end
 
