@@ -47,6 +47,18 @@ taskl.modified
 tasks = taskl.items
 ```
 
+### Retrieving Items with View fields
+```ruby
+# Retrieves an Array of Items with fields & it's values
+list_name = 'ListOfProjects'
+view_name = scli.get_view_collection(list_name).first.name
+view = scli.get_view(list_name, view_name)
+scli.get_list_items('ListOfProjects', :view_name => view_name, :view_fields => view.view_fields).each do |i|
+    fields_hash = i.fields
+    ....
+end
+```
+
 ### Creating/Renaming/Deleting a Task (other types of ListItems are forthcoming)
 ```ruby
 t1 = taskl.add_item!(:title => "New Task")
