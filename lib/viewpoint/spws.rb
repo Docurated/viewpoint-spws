@@ -52,11 +52,13 @@ require 'viewpoint/spws/websvc/web_service_base'
 require 'viewpoint/spws/websvc/copy'
 # Lists Web Service
 require 'viewpoint/spws/websvc/lists'
+require 'viewpoint/spws/websvc/views'
 require 'viewpoint/spws/types'
 require 'viewpoint/spws/types/list'
 require 'viewpoint/spws/types/tasks_list'
 require 'viewpoint/spws/types/document_library'
 require 'viewpoint/spws/types/list_item'
+require 'viewpoint/spws/types/view'
 # User and Groups Web Service
 require 'viewpoint/spws/websvc/user_group'
 require 'viewpoint/spws/types/user'
